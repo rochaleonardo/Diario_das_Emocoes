@@ -5,7 +5,13 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Diário das Emoções</title>
   <link rel="icon" type="image/svg+xml" sizes="any" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='82' text-anchor='middle' font-size='82'%3E🧠%3C/text%3E%3C/svg%3E">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png">
+  <link rel="manifest" href="./manifest.webmanifest">
   <meta name="theme-color" content="#7357b3">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Emoções">
   <style>
     :root{--bg:#f5f3ff;--surface:#fff;--text:#29243a;--muted:#6e6880;--line:#e7e1f1;--primary:#7357b3;--primary2:#9075cf;--soft:#eee8fb;--danger:#b54455;--shadow:0 12px 35px rgba(64,44,99,.10)}
     *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:linear-gradient(145deg,#f8f6ff,#f2f7f7);color:var(--text)}
@@ -144,5 +150,6 @@ $('#profileForm').onsubmit=e=>{e.preventDefault();if(!profileEditing)return;cons
 $('#welcomeStart').onclick=()=>{closeWelcome();activateView('register')};$('#welcomeProfile').onclick=()=>{closeWelcome();activateView('profile')};
 $('#meaningClose').onclick=closeMeaning;$('#meaningOverlay').onclick=e=>{if(e.target===$('#meaningOverlay'))closeMeaning()};document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#meaningOverlay').hidden)closeMeaning()});
 $('#date').value=nowLocal();renderFamilies();renderLevels();loadProfile();updateStorageIndicator();showWelcome();
+if('serviceWorker'in navigator&&location.protocol.startsWith('http'))window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js').catch(()=>{}));
 </script>
 </body></html>
